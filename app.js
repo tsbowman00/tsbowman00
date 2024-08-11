@@ -73,7 +73,7 @@ function searchTable() {
 
 // Function to show the entire CSV content in a table format
 function showCSV() {
-    var csvFilePath = "guest_list.csv";
+    var csvFilePath = "Wedding seating.csv";
 
     fetch(csvFilePath)
         .then(response => {

@@ -70,3 +70,25 @@ button:hover {
     background-color: #f9f9f9;
 }
 
+.csv-content {
+    text-align: center; /* Centers the table horizontally */
+    margin-top: 20px; /* Add some spacing from other elements */
+}
+
+.csv-content table {
+    margin: 0 auto; /* Centers the table horizontally */
+    border-collapse: collapse; /* Ensures borders collapse into single lines */
+    width: auto; /* Adjust width to fit content */
+}
+
+.csv-content table, .csv-content th, .csv-content td {
+    border: 1px solid #ddd; /* Adds a border to the table and cells */
+}
+
+.csv-content th, .csv-content td {
+    padding: 10px; /* Adds padding inside table cells */
+}
+
+.csv-content th {
+    background-color: #f4f4f4; /* Light background for table headers */
+}

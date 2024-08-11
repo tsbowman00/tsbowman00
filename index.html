@@ -10,8 +10,9 @@
     <div class="container">
         <h1>Welcome to Kendall and Connor's Wedding!</h1>
         <p>Please enter your name to find your table number</p>
-        <input type="text" id="guestName" placeholder="Enter your name">
-        <button onclick="searchTable()">Find My Table</button>
+        <input list="guestNames" id="guestName" placeholder="Enter your name">
+	<datalist id="guestNames"></datalist>
+	<button onclick="searchTable()">Find My Table</button>
         <div class="result" id="result"></div>
     </div>
 

@@ -1,3 +1,32 @@
+function loadGuestNames() {
+    var csvFilePath = "Wedding seating.csv";
+
+    fetch(csvFilePath)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text();
+        })
+        .then(data => {
+            var rows = data.split('\n');
+            var datalist = document.getElementById('guestNames');
+
+            // Skip the header row (index 0)
+            for (var i = 1; i < rows.length; i++) {
+                var cols = rows[i].split(',');
+
+                // Create an option element for each guest name
+                var option = document.createElement('option');
+                option.value = cols[0].trim();
+                datalist.appendChild(option);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+
 function searchTable() {
     var guestName = document.getElementById('guestName').value.trim().toLowerCase();
 
@@ -42,3 +71,5 @@ function searchTable() {
         });
 }
 
+// Call the loadGuestNames function when the page loads to populate the datalist
+document.addEventListener('DOMContentLoaded', loadGuestNames);

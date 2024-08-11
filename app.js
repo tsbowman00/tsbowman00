@@ -6,7 +6,7 @@ function searchTable() {
         return;
     }
 
-    var url = "https://script.google.com/macros/s/AKfycbxKfT41pECdbnFxSljIJcCJcx5FPOn7oydo6UjqlRY/dev?guestName=" + encodeURIComponent(guestName);
+    var url = "?https://script.google.com/macros/s/AKfycbzoG6KLAHy8pHnatO0GPdHOpYRTbKSIPcejTXOsoPwv/dev?guestName=" + encodeURIComponent(guestName);
 
     fetch(url)
         .then(response => response.text())

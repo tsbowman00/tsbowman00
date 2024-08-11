@@ -1,20 +1,39 @@
 function searchTable() {
-    var guestName = document.getElementById('guestName').value;
+    var guestName = document.getElementById('guestName').value.trim().toLowerCase();
 
     if (!guestName) {
         document.getElementById('result').innerHTML = "Please enter a guest name.";
         return;
     }
 
-    var url = "https://script.google.com/macros/s/AKfycbzoG6KLAHy8pHnatO0GPdHOpYRTbKSIPcejTXOsoPwv/exec?guestName=" + encodeURIComponent(guestName);
+    // Path to your CSV file
+    var csvFilePath = "Wedding seating.csv";
 
-    fetch(url)
-        .then(response => response.text())
+    fetch(csvFilePath)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text();
+        })
         .then(data => {
-            if (data === "Not Found") {
+            var found = false;
+            var rows = data.split('\n');
+
+            // Skip the header row (index 0)
+            for (var i = 1; i < rows.length; i++) {
+                var cols = rows[i].split(',');
+
+                // Check if the guest name matches
+                if (cols[0].trim().toLowerCase() === guestName) {
+                    document.getElementById('result').innerHTML = "Table Number: " + cols[1].trim();
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found) {
                 document.getElementById('result').innerHTML = "Name not found. Please try again.";
-            } else {
-                document.getElementById('result').innerHTML = "Table Number: " + data;
             }
         })
         .catch(error => {
